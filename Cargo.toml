@@ -1,0 +1,7 @@
+[package]
+name = "jgc"
+version = "0.1.0"
+authors = ["shirase_aoi <ieee0824@ezweb.ne.jp>"]
+
+[dependencies]
+rustc-serialize = "*"

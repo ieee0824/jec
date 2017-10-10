@@ -11,18 +11,22 @@ func main() {
 	base := `
 	{
 		"Integer": "$int",
-		"String": "$string"
+		"String": "$string",
+		"Object": "$object"
 	}
 	`
 
 	varsString := `
 	{
 		"int": 1,
-		"string": "hoge"
+		"string": "hoge",
+		"object": {
+			"array": ["foo", "bar", "baz"]
+		}
 	}
 	`
 
-	result, err := jec.Embedde([]byte(base), []byte(varsString))
+	result, err := jec.Embed([]byte(base), []byte(varsString))
 	if err != nil {
 		log.Fatalln(err)
 	}

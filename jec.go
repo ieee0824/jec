@@ -8,6 +8,14 @@ import (
 
 const jgcVarRegBase = `"\$%s"`
 
+func prettify(b []byte)([]byte, error) {
+	var i interface{}
+	if err := json.Unmarshal(b, &i); err != nil {
+		return nil, err
+	}
+	return json.MarshalIndent(i, "", "  ")
+}
+
 func Embed(b, v []byte) ([]byte, error) {
 	vars := map[string]interface{}{}
 
@@ -24,5 +32,5 @@ func Embed(b, v []byte) ([]byte, error) {
 		b = re.ReplaceAll(b, val)
 	}
 
-	return b, nil
+	return prettify(b)
 }

@@ -20,7 +20,7 @@ func compaireJSON(a, b []byte) bool {
 	return reflect.DeepEqual(am, bm) || (len(am) == 0 && len(bm) == 0)
 }
 
-func TestEmbedde(t *testing.T) {
+func TestEmbed(t *testing.T) {
 	tests := []struct {
 		base string
 		val  string
@@ -90,7 +90,7 @@ func TestEmbedde(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		got, err := Embedde([]byte(test.base), []byte(test.val))
+		got, err := Embed([]byte(test.base), []byte(test.val))
 		if !test.err && err != nil {
 			t.Fatalf("should not be error for %v, %v but: %v", test.base, test.val, err)
 		}

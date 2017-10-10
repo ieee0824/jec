@@ -8,7 +8,7 @@ import (
 
 const jgcVarRegBase = `"\$%s"`
 
-func Embedde(b, v []byte) ([]byte, error) {
+func Embed(b, v []byte) ([]byte, error) {
 	vars := map[string]interface{}{}
 
 	if err := json.Unmarshal(v, &vars); err != nil {

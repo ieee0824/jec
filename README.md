@@ -1,5 +1,7 @@
 # jec
 
+Embed config in json
+
 # example
 
 ## base

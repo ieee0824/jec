@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/ieee0824/jgc"
+	"github.com/ieee0824/jec"
 )
 
 func main() {
@@ -22,7 +22,7 @@ func main() {
 	}
 	`
 
-	result, err := jgc.Embedde([]byte(base), []byte(varsString))
+	result, err := jec.Embedde([]byte(base), []byte(varsString))
 	if err != nil {
 		log.Fatalln(err)
 	}

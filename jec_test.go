@@ -1,4 +1,4 @@
-package jgc
+package jec
 
 import (
 	"encoding/json"

@@ -1,0 +1,12 @@
+version: 2
+jobs:
+    build:
+        docker:
+            - image: golang:1.9
+    working_directory: /go/src/github.com/ieee0824/jec
+    steps:
+        - checkout
+        - run:
+            name: run test
+            commands:
+                go test -v ./...

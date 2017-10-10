@@ -87,6 +87,30 @@ func TestEmbed(t *testing.T) {
 			`,
 			false,
 		},
+		{
+			`
+			{
+				"Object": "$object"
+			}
+			`,
+			`
+			{
+				"object": {
+					"obj": {"hoge": "huga"},
+					"array": ["foo", "bar", "baz"]
+				}
+			}
+			`,
+			`
+			{
+				"Object": {
+					"obj": {"hoge": "huga"},
+					"array": ["foo", "bar", "baz"]
+				}
+			}
+			`,
+			false,
+		},
 	}
 
 	for _, test := range tests {

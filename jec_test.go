@@ -111,18 +111,36 @@ func TestEmbed(t *testing.T) {
 			`,
 			false,
 		},
+		{
+			`
+			{
+				"String": "$string"
+			}
+			`,
+			`
+			{
+				"string": "$a"
+			}
+			`,
+			`
+			{
+				"String": "$a"
+			}
+			`,
+			false,
+		},
 	}
 
 	for _, test := range tests {
 		got, err := Embed([]byte(test.base), []byte(test.val))
 		if !test.err && err != nil {
-			t.Fatalf("should not be error for %v, %v but: %v", test.base, test.val, err)
+			t.Fatalf("should not be error for \n%s\n, \n%s\n but: %v", test.base, test.val, err)
 		}
 		if test.err && err == nil {
-			t.Fatalf("should be error for %v, %v but not:", test.base, test.val)
+			t.Fatalf("should be error for \n%s\n, \n%s\n but not:", test.base, test.val)
 		}
 		if !compaireJSON(got, []byte(test.want)) {
-			t.Fatalf("want %q, but %q:", test.want, got)
+			t.Fatalf("want %s\n, but %s\n:", test.want, got)
 		}
 	}
 }

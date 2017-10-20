@@ -3,12 +3,12 @@ package jec
 import (
 	"encoding/json"
 	"fmt"
-	"regexp"
+	"strings"
 )
 
-const jgcVarRegBase = `"\$%s"`
+const jgcBase = `"$%s"`
 
-func prettify(b []byte)([]byte, error) {
+func prettify(b []byte) ([]byte, error) {
 	var i interface{}
 	if err := json.Unmarshal(b, &i); err != nil {
 		return nil, err
@@ -28,8 +28,8 @@ func Embed(b, v []byte) ([]byte, error) {
 		if err != nil {
 			return nil, err
 		}
-		re := regexp.MustCompile(fmt.Sprintf(jgcVarRegBase, k))
-		b = re.ReplaceAll(b, val)
+
+		b = []byte(strings.Replace(string(b), fmt.Sprintf(jgcBase, k), string(val), -1))
 	}
 
 	return prettify(b)
